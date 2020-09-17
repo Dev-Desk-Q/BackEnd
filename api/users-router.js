@@ -17,7 +17,7 @@ router.get("/users", restrict("helper"), async (req, res, next) => {
 
 router.post("/register", async (req, res, next) => {
 	try {
-		const { username, password, department } = req.body
+		const { username, password, role } = req.body
 		const user = await Users.findBy({ username }).first()
 
 		if (user) {
@@ -30,7 +30,7 @@ router.post("/register", async (req, res, next) => {
 			username,
 			// hash the password with a time complexity of "14"
             password: await bcrypt.hash(password, 14),
-            department
+            role
 		})
 
 		res.status(201).json(newUser)
@@ -62,7 +62,7 @@ router.post("/login", async (req, res, next) => {
 		// generate a new JSON web token
 		const token = jwt.sign({
 			userID: user.id,
-			userRole: "admin", // this value would normally come from the database
+			role: "admin", // this value would normally come from the database
 		}, process.env.JWT_SECRET)
 
 		// send the token back as a cookie
