@@ -30,12 +30,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< HEAD
-    "start": "node server.js"
-=======
     "nodemon": "nodemon index.js",
     "start": "node index.js"
->>>>>>> a7617ebffd60e1abb6ee14c46f846aeaa86ae5a9
   },
   "repository": {
     "type": "git",
