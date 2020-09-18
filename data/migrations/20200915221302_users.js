@@ -22,7 +22,7 @@ exports.up = async function(knex) {
       .unsigned()
       .notNullable()
       .references("id")
-      .inTable("tickets")
+      .inTable("users")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
     table
@@ -40,3 +40,5 @@ exports.down = async function(knex) {
   await knex.schema.dropTableIfExists("tickets");
   await knex.schema.dropTableIfExists("users");
 };
+// comment
+// comment
