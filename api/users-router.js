@@ -62,11 +62,11 @@ router.post("/login", async (req, res, next) => {
 		// generate a new JSON web token
 		const token = jwt.sign({
 			userID: user.id,
-			role: "admin", // this value would normally come from the database
+			role: user.role, // this value would normally come from the database, updated to pull from db
 		}, process.env.JWT_SECRET)
 
-		// send the token back as a cookie
-		res.cookie("token", token)
+		// send the token back as a cookie, disabled for this project based on React2 MVP
+		// res.cookie("token", token)
 
 		res.json({
             message: `Welcome ${user.username}!`,
