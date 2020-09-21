@@ -22,9 +22,23 @@ function findById(id) {
 		.first()
 }
 
+function update(id, changes) {
+	return db("tickets")
+	.where({ id })
+	.update(changes)
+}
+
+function remove(id) {
+	return db("tickets")
+	.where("id", id)
+	.del()
+}
+
 module.exports = {
 	add,
 	find,
 	findBy,
 	findById,
+	update,
+	remove
 }
