@@ -34,7 +34,6 @@ function restrict(role) {
                 // make the token's payload available to other middleware functions
                 // PROBABLY DONT NEED THIS LINE 
 				req.userData = decoded
-                console.log("restrict", req.userData)
 				next()
 			})
 		} catch(err) {
