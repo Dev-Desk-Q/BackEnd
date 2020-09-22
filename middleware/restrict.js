@@ -11,7 +11,8 @@ function restrict(role) {
 
 		try {
             // Don't need cookies unless React 2 requirements changed, may delete/comment out
-			const token = req.cookies.token
+            // const token = req.cookies.token
+            const token = req.headers.authorization 
 			if (!token) {
 				return res.status(401).json(authError)
 			}
@@ -23,14 +24,15 @@ function restrict(role) {
 				}
 
 				// make sure the user's role is above or the same as the required role
-				if (role && roles.indexOf(decoded.userRole) < roles.indexOf(role)) {
+				if (role && roles.indexOf(decoded.role) < roles.indexOf(role)) {
 					return res.status(403).json({
 						message: "You are not allowed here",
 					})
 				}
 
 				// we know the user is authorized at this point,
-				// make the token's payload available to other middleware functions
+                // make the token's payload available to other middleware functions
+                // PROBABLY DONT NEED THIS LINE 
 				req.token = decoded
 
 				next()

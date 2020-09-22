@@ -4,8 +4,8 @@ exports.seed = function(knex) {
       .then(function () {
         // Inserts seed entries
         return knex('users').insert([
-          { username: 'student1', role: "student", password: "password" },
-          { username: 'helper1', role: "helper", password: "password" },
+          { username: 'student1', role: "student", password: "$2a$14$wPEPCD3elVl4KgpNkim8g.7mPAIylWWUebI7YRuEYlDL7hfBCO4j6" },
+          { username: 'helper1', role: "helper", password: "$2a$14$wPEPCD3elVl4KgpNkim8g.7mPAIylWWUebI7YRuEYlDL7hfBCO4j6" },
           
         ]);
       });

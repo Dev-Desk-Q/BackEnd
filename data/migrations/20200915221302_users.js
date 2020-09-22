@@ -20,7 +20,6 @@ exports.up = async function(knex) {
     table
       .integer("assigned_to")
       .unsigned()
-      .notNullable()
       .references("id")
       .inTable("users")
       .onUpdate("CASCADE")
