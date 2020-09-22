@@ -33,8 +33,7 @@ function restrict(role) {
 				// we know the user is authorized at this point,
                 // make the token's payload available to other middleware functions
                 // PROBABLY DONT NEED THIS LINE 
-				req.token = decoded
-
+				req.userData = decoded
 				next()
 			})
 		} catch(err) {

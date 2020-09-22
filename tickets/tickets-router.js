@@ -50,26 +50,39 @@ router.get("/users/:id", restrict("student"), (req, res, next) => {
 router.post("/", restrict("student"), (req, res, next) => {
 	if (!req.body) {
 		return res.status(400).json({
-			message: "Need a value for text",
+			message: "Need the required fields.",
 		})
 	}
-
-	tickets.add(req.body)
+	const newTicket = {...req.body, user_id: req.userData.userID}
+	
+	tickets.add(newTicket)
 		.then((ticket) => {
 			res.status(201).json(ticket)
 		})
 		.catch(next)
 })
+// Check with front end to validate the PUT data and form specifically for helper assignment.
+router.put("/:id", restrict("student"), (req, res, next) => {
+	if (req.body.assigned === true) {
+		const assignedTo = req.userData.userID 
+		const updatedTicket = { ...req.body, assigned_to: assignedTo}
+		tickets.update(req.params.id, updatedTicket)
+		.then((ticket) => {
+			res.status(200).json(ticket)
+		})
+		.catch(next) 
 
-router.put("/users/:id/tickets/:ticketId", restrict("helper"), (req, res, next) => {
+		} else { 
+
 	tickets.update(req.params.id, req.body)
 		.then((ticket) => {
 			res.status(200).json(ticket)
 		})
 		.catch(next) 
+	}
 })
 
-router.delete("/users/:id/tickets/:ticketId", restrict("helper"), (req, res, next) => {
+router.delete("/:id", restrict("helper"), (req, res, next) => {
 	tickets.remove(req.params.id)
 		.then((count) => {
 			if (count > 0) {
