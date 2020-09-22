@@ -50,18 +50,19 @@ router.get("/users/:id", restrict("student"), (req, res, next) => {
 router.post("/", restrict("student"), (req, res, next) => {
 	if (!req.body) {
 		return res.status(400).json({
-			message: "Need a value for text",
+			message: "Need the required fields.",
 		})
 	}
-
-	tickets.add(req.body)
+	const newTicket = {...req.body, user_id: req.userData.userID}
+	console.log(newTicket)
+	tickets.add(newTicket)
 		.then((ticket) => {
 			res.status(201).json(ticket)
 		})
 		.catch(next)
 })
 
-router.put("/users/:id/tickets/:ticketId", restrict("helper"), (req, res, next) => {
+router.put("/:id/", restrict("helper"), (req, res, next) => {
 	tickets.update(req.params.id, req.body)
 		.then((ticket) => {
 			res.status(200).json(ticket)
