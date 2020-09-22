@@ -11,7 +11,8 @@ module.exports = {
   getById,
   getStudentTickets,
   update,
-  remove
+  remove,
+  getByUserId
 };
 
 function get() {
@@ -19,13 +20,17 @@ function get() {
 }
 
 function getById(id) {
-  return db("tickets").where({ id }).first()
+  return db("tickets").where({ id })
+}
+
+function getByUserId(id) {
+  return db("tickets").where("user_id", id )
 }
 
 async function add(ticket) {
-  const [id] = await db("tickets").insert(ticket, "id");
+  const [id] = await db("tickets").insert(ticket);
 
-  return findById(id);
+  return getById(id);
 }
 
 function getStudentTickets(studentId) {
