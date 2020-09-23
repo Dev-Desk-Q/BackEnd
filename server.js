@@ -16,7 +16,7 @@ server.use("/api/users/", usersRouter);
 server.use("/api/tickets", ticketsRouter);
 
 server.get("/", (req, res) => {
-  res.status(200).json({ api: "Welcome to the DevDesk Queue BackEnd" });
+  res.status(200).json({ message: "Welcome to the DevDesk Queue BackEnd" });
 });
 
 module.exports = server;
