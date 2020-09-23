@@ -68,7 +68,7 @@ router.put("/:id", restrict("student"), (req, res, next) => {
 		const updatedTicket = { ...req.body, assigned_to: assignedTo}
 		tickets.update(req.params.id, updatedTicket)
 		.then((ticket) => {
-			res.status(200).json(ticket)
+			res.status(200).json({message: "The ticket has been updated, and a helper assigned."})
 		})
 		.catch(next) 
 
@@ -76,7 +76,7 @@ router.put("/:id", restrict("student"), (req, res, next) => {
 
 	tickets.update(req.params.id, req.body)
 		.then((ticket) => {
-			res.status(200).json(ticket)
+			res.status(200).json({message: "The ticket has been updated"})
 		})
 		.catch(next) 
 	}
