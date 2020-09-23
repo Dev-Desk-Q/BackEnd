@@ -11,7 +11,7 @@ When logged in as a `student`, they have the ability to see all available ticket
 | Method | Endpoint               | Description                                                 |
 | ------ | ---------------------- | ----------------------------------------------------------- |
 | GET    | /api/users/            | Takes you to the user data that has an existing login.      |
-| GET    | /api/users/login       | Allows a logged in user to logout.                          |
+| GET    | /api/users/logout      | Allows a logged in user to logout.                          |
 | POST   | /api/users/register    | Allows a new user to register.                              |
 | POST   | /api/users/login       | Allows a current user to login to their profile.            |
 | GET    | /api/tickets           | GET all available tickets in the DevDesk Queue.             |
