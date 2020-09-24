@@ -18,12 +18,12 @@ exports.up = async function(knex) {
     table.bool("completed").defaultTo(false);
     table.bool("assigned").defaultTo(false);
     table
-      .integer("assigned_to")
-      .unsigned()
-      .references("id")
-      .inTable("users")
-      .onUpdate("CASCADE")
-      .onDelete("CASCADE");
+      .text("assigned_to")
+      // .unsigned()
+      // .references("id")
+      // .inTable("users")
+      // .onUpdate("CASCADE")
+      // .onDelete("CASCADE");
     table
       .integer("user_id")
       .unsigned()

@@ -16,8 +16,9 @@ module.exports = {
 };
 
 function get() {
-  return db.select("*").from("users").leftJoin("tickets")
-
+  return db.select("t.id","t.title", "t.description", "t.tried", "t.category", "t.completed", "t.assigned", "t.assigned_to", "t.user_id", "u.username")
+  .from("tickets as t")
+  .join("users as u", "u.id", "t.user_id")
 }
 
 function getById(id) {

@@ -31,9 +31,9 @@ function restrict(role) {
 				}
 
 				// we know the user is authorized at this point,
-                // make the token's payload available to other middleware functions
-                // PROBABLY DONT NEED THIS LINE 
-				req.userData = decoded
+                //    decoding the jwt and passing "req.userData" on to the rest of the stack, available onward
+                req.userData = decoded
+                
 				next()
 			})
 		} catch(err) {
