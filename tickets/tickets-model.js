@@ -16,7 +16,8 @@ module.exports = {
 };
 
 function get() {
-  return db("tickets")
+  return db.select("*").from("users").leftJoin("tickets")
+
 }
 
 function getById(id) {
