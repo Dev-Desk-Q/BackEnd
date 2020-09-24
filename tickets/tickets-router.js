@@ -63,8 +63,9 @@ router.post("/", restrict("student"), (req, res, next) => {
 })
 // Check with front end to validate the PUT data and form specifically for helper assignment.
 router.put("/:id", restrict("student"), (req, res, next) => {
-	if (req.body.assigned === true) {
-		const assignedTo = req.userData.userID 
+	if (req.body.assigned === true || req.body.assigned === 1) {
+		const assignedTo = req.userData.username 
+		
 		const updatedTicket = { ...req.body, assigned_to: assignedTo}
 		tickets.update(req.params.id, updatedTicket)
 		.then((ticket) => {
