@@ -21,6 +21,7 @@
     "node-pre-gyp": "^0.15.0",
     "oracledb": "^5.0.0",
     "pg": "^8.3.3",
+    "request-promise-native": "^1.0.9",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
@@ -30,9 +31,9 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "test": "jest --watch",
     "nodemon": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
